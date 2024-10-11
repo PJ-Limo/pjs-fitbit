@@ -1,20 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import { useState } from 'react'
 
-import Dashboard from './components/Dashboard';
-import LogWorkout from './components/LogWorkout';
+
 
 const App = () => {
-
+  const [darkMode, setDarkMode] = useState(false);
+  
+  const toggleDarkMode=() => {
+    setDarkMode( !darkMode );
+  };
   return (
-    <div>
-      <Router>
-          <Routes>
-        
-              <Route index element={<Dashboard />} />
-              <Route path='LogWorkouts' element={<LogWorkout />} />
-          </Routes>
-        </Router> 
+    <div className={`${darkMode && "dark"}`}>
+       <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
     </div>
   )
 }
