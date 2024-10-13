@@ -49,9 +49,9 @@ const WorkoutLog = ({ addWorkout }) => {
   return (
     <div className="min-h-screen p-6 bg-[url('/src/assets/Fitness-image-1.png')] bg-cover bg-center flex-col justify-center items-center">
 
-      <div className="text-center mt-52">
+      <div className="text-center mt-48">
       <h1 className="text-7xl font-extrabold mb-4 text-white mt-14">Welcome!!</h1>
-      <p className="text-2xl font-thin mb-20 text-white">Track your progress, crush your goals, and unlock a fitter you-one workout at a time!</p>
+      <p className="text-2xl font-thin mb-14 text-white">Track your progress, crush your goals, and unlock a fitter you-one workout at a time!</p>
       <h2 className="text-4xl font-bold mb-16 text-Yellow">Log latest Workout</h2>
       </div>
 
@@ -178,7 +178,7 @@ const WorkoutLog = ({ addWorkout }) => {
         <div className="flex flex-wrap flex-col justify-center w-full  items-center space-x-4 mb-4">
 
         <textarea id="notes"
-          className="w-[500px] p-2 border border-gray-300 rounded-md bg-[#e6e8ea] text-Navy mt-10 mb- dark:bg-NavyB" 
+          className="w-[500px] p-2 border border-gray-300 rounded-md bg-[#e6e8ea] text-Navy mt-10 mb-10 dark:bg-NavyB" 
           rows="4" 
           placeholder="Add notes..."
           value={notes}
@@ -194,6 +194,9 @@ const WorkoutLog = ({ addWorkout }) => {
         </button>
         </div>
       </form>
+
+      <p className="text-sm italic  text-center font-thin mt-10 mb-10 text-white dark:text-Yellow">“The only bad workout is the one that didn’t happen.”</p>
+
     </div>
   );
 };

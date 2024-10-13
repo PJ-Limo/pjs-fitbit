@@ -11,7 +11,7 @@ import { GiWeightLiftingUp } from "react-icons/gi";
 
 export const links = [
   {
-    href: "/Home",
+    href: "/",
     icon: PiNotePencilBold,
     text: "Home",
   },

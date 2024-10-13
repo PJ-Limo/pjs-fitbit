@@ -67,6 +67,7 @@ const History = () => {
                 Refresh
             </button>
             )}
+      <p className="text-sm italic  text-center font-thin mt-10 mb-10 text-Navy dark:text-Yellow">“Small steps lead to big changes. Keep moving forward!”</p>
 
     </div>
   );
