@@ -1,8 +1,3 @@
-//I'm having a chellenge in fetching workout data from the API while also fetching logged workout from the local storage
-// How do I display both of these simultanously??? TODO
-
-
-
 import { useState } from "react";
 
 const WorkoutLog = ({ addWorkout }) => {
@@ -14,6 +9,13 @@ const WorkoutLog = ({ addWorkout }) => {
   const [notes, setNotes] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // Function to save workout to local storage
+  const saveWorkoutLog = (log) => {
+    const savedLogs = JSON.parse(localStorage.getItem('workoutLogs')) || [];
+    savedLogs.push(log);
+    localStorage.setItem('workoutLogs', JSON.stringify(savedLogs));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +32,8 @@ const WorkoutLog = ({ addWorkout }) => {
       date: new Date().toLocaleDateString(),
     };
 
-    addWorkout(log); // Add the new workout via the prop function
+    console.log(log);
+    saveWorkoutLog(log);
 
     // Clear form fields
     setWorkout("");
@@ -44,21 +47,25 @@ const WorkoutLog = ({ addWorkout }) => {
   };
 
   return (
-    <div className="my-8 p-6 bg-[url('/src/assets/Fitness-image-1.png')] bg-cover bg-center flex-col justify-center items-center rounded-lg">
-      <h1 className="text-5xl font-extrabold mb-4 text-center text-white mt-14">Welcome!!</h1>
-      <p className="text-lg font-thin mb-4 text-center text-white">Track your progress, crush your goals, and unlock a fitter you-one workout at a time!</p>
-      <h2 className="text-2xl font-bold mb-6 text-center text-Yellow">Log latest Workout</h2>
+    <div className="min-h-screen p-6 bg-[url('/src/assets/Fitness-image-1.png')] bg-cover bg-center flex-col justify-center items-center">
+
+      <div className="text-center mt-52">
+      <h1 className="text-7xl font-extrabold mb-4 text-white mt-14">Welcome!!</h1>
+      <p className="text-2xl font-thin mb-20 text-white">Track your progress, crush your goals, and unlock a fitter you-one workout at a time!</p>
+      <h2 className="text-4xl font-bold mb-16 text-Yellow">Log latest Workout</h2>
+      </div>
 
       {error && <p className="text-red-500 text-center">{error}</p>}
-      <form onSubmit={handleSubmit} className="space-y-4">
+      
+      <form id="logWorkout-form" onSubmit={handleSubmit} className="space-y-4">
 
-        <div className="flex flex-wrap justify-center w-full  items-center space-x-4 mb-4">
+        <div className="flex flex-wrap justify-center w-full  items-center space-x-10 mb-4">
 
           <select 
             id="workout"
             value={workout}
             onChange={(e) => setWorkout(e.target.value)}
-            className="w-[150px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
+            className="w-[180px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
             required
           >
             <option value="">Select Workout</option>
@@ -76,7 +83,7 @@ const WorkoutLog = ({ addWorkout }) => {
             id="sets"
             value={sets}
             onChange={(e) => setSets(e.target.value)}
-            className="w-[150px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
+            className="w-[180px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
             required
           >
             <option value="">Add sets</option>
@@ -92,7 +99,7 @@ const WorkoutLog = ({ addWorkout }) => {
             id="reps"
             value={reps}
             onChange={(e) => setReps(e.target.value)}
-            className="w-[150px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
+            className="w-[180px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
             required
           >
             <option value="">Add reps</option>
@@ -111,7 +118,7 @@ const WorkoutLog = ({ addWorkout }) => {
             id="weight"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-            className="w-[150px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
+            className="w-[180px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
             required
           >
             <option value="">Add Weight</option>
@@ -144,7 +151,7 @@ const WorkoutLog = ({ addWorkout }) => {
             id="equipment"
             value={equipment}
             onChange={(e) => setEquipment(e.target.value)}
-            className="w-[150px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
+            className="w-[180px] rounded-md shadow-none text-center text-[15px] bg-[#071629] text-white mix-blend-screen border border-[#FFBC00] p-2"
             required
           >
             <option value="">Equipment used</option>
@@ -170,8 +177,8 @@ const WorkoutLog = ({ addWorkout }) => {
         </div>
         <div className="flex flex-wrap flex-col justify-center w-full  items-center space-x-4 mb-4">
 
-        <textarea 
-          className="w-96 p-2 border border-gray-300 rounded-md bg-[#e6e8ea] text-Navy mt-10 mb-10" 
+        <textarea id="notes"
+          className="w-[500px] p-2 border border-gray-300 rounded-md bg-[#e6e8ea] text-Navy mt-10 mb- dark:bg-NavyB" 
           rows="4" 
           placeholder="Add notes..."
           value={notes}
@@ -180,7 +187,7 @@ const WorkoutLog = ({ addWorkout }) => {
 
         <button
           type="submit"
-          className="bg-Yellow text-Navy  font-semibold border border-white px-4 py-2 rounded-2xl hover:bg-Yellow transition duration-200"
+          className="bg-Yellow text-Navy  font-semibold border border-white px-4 py-2 rounded-2xl hover:bg-YellowB transition duration-200 w-[150px]"
           disabled={loading}
         >
           {loading ? "Logging Workout..." : "Log Workout"}

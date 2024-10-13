@@ -9,7 +9,9 @@ export default {
       colors: {
         Navy: '#071629',
         NavyB: '#202d3e',
-        Yellow: '#ffbC00' // Define your custom color here
+        NavyC: '#6a737f',
+        Yellow: '#ffbC00',
+        YellowB: '#ffd766' // Define your custom color here
       },
       fontFamily: {
         OpenSans : ["Open Sans", "sans-serif"], 
