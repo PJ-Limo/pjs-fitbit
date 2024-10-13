@@ -8,11 +8,12 @@ export default {
     extend: {
       colors: {
         Navy: '#071629',
+        NavyB: '#202d3e',
         Yellow: '#ffbC00' // Define your custom color here
       },
       fontFamily: {
         OpenSans : ["Open Sans", "sans-serif"], 
-        }
+        },
     },
   },
 
