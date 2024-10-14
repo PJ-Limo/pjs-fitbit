@@ -71,7 +71,7 @@ const WorkoutLog = ({ addWorkout }) => {
             <option value="">Select Workout</option>
             <option value="Biceps">Biceps</option>
             <option value="Triceps">Triceps</option>
-            <option value="Leg day">Running</option>
+            <option value="Leg day">Leg Day</option>
             <option value="Back">Back</option>
             <option value="Shoulders">Shoulders</option>
             <option value="Core">Core</option>
@@ -87,6 +87,7 @@ const WorkoutLog = ({ addWorkout }) => {
             required
           >
             <option value="">Add sets</option>
+            <option value="0">N/A</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>

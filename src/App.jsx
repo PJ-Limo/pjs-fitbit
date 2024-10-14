@@ -7,7 +7,6 @@ import LogWorkout from './components/LogWorkout';
 import History from './components/History';
 import Stats from './components/Stats'; 
 import WorkoutGuide from './components/WorkoutGuide';
-import Nutrition from './components/Nutrition'; 
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -31,7 +30,6 @@ function App() {
               <Route path="/history" element={<History />} />
               <Route path="/stats" element={<Stats />} />
               <Route path="/workoutguide" element={<WorkoutGuide />} />
-              <Route path="/nutrition" element={<Nutrition />} />
           </Routes>
         </div>
       </Router>
