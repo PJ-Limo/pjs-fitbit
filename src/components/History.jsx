@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+import dayjs from 'dayjs';
 
 const History = () => {
   const [workoutLogs, setWorkoutLogs] = useState([]);
@@ -10,17 +11,17 @@ const History = () => {
     setWorkoutLogs(savedLogs);
   }, []);
 
-  const handleSearch = () => {
-    // Filter logs by date
-    const filteredLogs = JSON.parse(localStorage.getItem('workoutLogs')) || [];
-    const filteredByDate = filteredLogs.filter(log => log.date === searchDate);
+  const filteredLogs = useMemo(() => {
     
-    setWorkoutLogs(filteredByDate);
-  };
+    if (searchDate === "") {
+      return workoutLogs
+    }
+    return workoutLogs.filter(log => dayjs(log.date).isSame(dayjs(searchDate),'day'));
+  },[searchDate, workoutLogs])
 
   const clearLogsFromState = () => {
     // Clear logs from the state, but not from local storage
-    setWorkoutLogs([]);
+    setSearchDate('');
   };
 
 
@@ -35,21 +36,17 @@ const History = () => {
             onChange={(e) => setSearchDate(e.target.value)}
             className="border border-gray-300 rounded-md p-2 mb-4 dark:border-none"
         />
-
-        <button onClick={handleSearch} className="bg-none border border-[#FFBC00] text-white px-4 py-2 rounded-2xl w-28 hover:bg-NavyB">
-            Search
-        </button>
       </div>
 
       <h2 className='font-bold text-xl mt-10 dark:text-white'>Workouts logged that day:</h2>
 
-      {workoutLogs.length === 0 ? (
+      {filteredLogs.length === 0 ? (
         <p className='dark:text-white'>No logs found.</p>
       ) : (
         <ul className="mt-4 bg-[#e6e8ea] p-4 dark:bg-NavyB dark:text-white">
-          {workoutLogs.map((log, index) => (
+          {filteredLogs.map((log, index) => (
               <div key={index} className="flex flex-row justify-between items-center border-b py-2 space-x-6">
-              <p><strong>Date:</strong> {log.date}</p>
+              <p><strong>Date:</strong> {dayjs(log.date).format('DD/MM/YYYY')}</p>
               <p><strong>Workout:</strong> {log.workout}</p>
               <p><strong>Sets:</strong> {log.sets}</p>
               <p><strong>Reps:</strong> {log.reps}</p>
