@@ -1,14 +1,26 @@
 import React from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
-const LinkItem = ({href, icon: Icon, text, badge}) => {
-  return (
-    <li>
-      <a href={href} className='flex items-center p-2 text-Nav rounded-lg dark:text-white hover:bg-navy hover:text-Yellow dark:hover:bg-Yellow '>
-        <Icon className='mr-2'/>
-        <span className='flex-1 me-3'>{text}</span>
-      </a>
-    </li>
-  )
+const LinkItem = ({ href, icon: Icon, text, isSidebarOpen }) => {
+    const location = useLocation()
+    const isActive = href === location.pathname
+    return (
+        <li>
+            <NavLink
+                className={
+                    `flex gap-4 items-center p-2 text-Navy dark:text-white hover:bg-Navy hover:text-Yellow dark:hover:bg-Yellow
+                    ${isActive
+                        ? 'text-Yellow bg-Navy'
+                        : ''}`
+                }
+                to={href}
+                end
+            >
+                <Icon />
+                <span className={`${isSidebarOpen ? '' : 'hidden'}`}>{text}</span>
+            </NavLink>
+        </li>
+    )
 }
 
 export default LinkItem

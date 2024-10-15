@@ -10,29 +10,30 @@ import WorkoutGuide from './components/WorkoutGuide';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <div className={`${darkMode && "dark"} flex h-screen`}>
-      <Router>
+    <div className={`${darkMode && "dark"} flex flex-col h-screen`}>
         {/* Header and Sidebar visible on all pages */}
         <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} toggleSidebar={toggleSidebar} />
-        {isSidebarOpen && <Sidebar />}
 
         {/* Main Content Area */}
-        <div className="flex-grow p-4">
+        <div className="w-full flex-1 flex">
+
+        <Sidebar isSidebarOpen={isSidebarOpen} />
+        <div className='flex-1'>
           <Routes>
-            <Route index element={<Home />} />
-              <Route path="/logworkout" element={<LogWorkout />} />
-              <Route path="/history" element={<History />} />
-              <Route path="/stats" element={<Stats />} />
-              <Route path="/workoutguide" element={<WorkoutGuide />} />
-          </Routes>
+              <Route index element={<Home />} />
+                <Route path="/logworkout" element={<LogWorkout />} />
+                <Route path="/history" element={<History />} />
+                <Route path="/stats" element={<Stats />} />
+                <Route path="/workoutguide" element={<WorkoutGuide />} />
+            </Routes>
         </div>
-      </Router>
+        </div>
     </div>
   );
 }

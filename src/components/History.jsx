@@ -25,7 +25,7 @@ const History = () => {
 
 
   return (
-    <div className="p-6 flex flex-col w-full justify-center items-center dark:bg-Navy min-h-screen">
+    <div className="w-full h-full dark:bg-Navy">
       <h1 className="font-bold mt-42 mb-10 text-5xl dark:text-Yellow">Workout History</h1>
 
       <div className='flex flex-col bg-Navy p-4 rounded-lg items-center justify-center '>

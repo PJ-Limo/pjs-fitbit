@@ -42,7 +42,7 @@ const WorkoutGuide = () => {
   };
 
   return (
-    <div className="container m-auto p-4 items-center justify-center dark:bg-Navy">
+    <div className="dark:bg-Navy">
       
       <div className="flex flex-col items-center mb-4">
       <h1 className="text-3xl font-bold mt-24 mb-9 dark:text-Yellow">Workout Guide</h1>
