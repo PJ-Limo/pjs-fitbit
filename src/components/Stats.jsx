@@ -1,66 +1,41 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
-// Register components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+// src/components/StatsPage.js
+import React, { useState, useEffect } from 'react'
+import Reps from './charts/reps'
+import TotalWorkouts from './charts/TotalWorkouts'
+import WeightsLifted from './charts/weightsLifted'
+import CenteredContent from './CenteredContent'
 
 const Stats = () => {
-  // Retrieve logged workouts from local storage
-  const workouts = JSON.parse(localStorage.getItem('workouts')) || [];
+    const [workoutLogs, setWorkoutLogs] = useState([])
 
-  // Calculate total duration and top workouts
-  const totalDuration = workouts.reduce((sum, workout) => sum + workout.duration, 0);
-  
-  const workoutCounts = workouts.reduce((acc, workout) => {
-    acc[workout.name] = (acc[workout.name] || 0) + 1;
-    return acc;
-  }, {});
+    // Fetch workout data from localStorage
+    useEffect(() => {
+        const storedLogs = localStorage.getItem('workoutLogs')
+        if (storedLogs) {
+            setWorkoutLogs(JSON.parse(storedLogs))
+        }
+    }, [])
 
-  const topWorkouts = Object.entries(workoutCounts)
-    .sort(([, countA], [, countB]) => countB - countA)
-    .slice(0, 4);
+    return (
+        <CenteredContent>
+                <h1 className="text-3xl font-bold mb-8">Workout Progress</h1>
+                <div className='flex flex-row lg:space-x-8'>
+                  
+                <div>
+                    <h2 className="text-lg font-medium mb-6">Total Weight Lifted Over Time</h2>
+                    <WeightsLifted logs={workoutLogs} />
+                </div>
+                <div>
+                    <h2 className="text-lg font-medium mb-6">Average Reps per Set Over Time</h2>
+                    <Reps logs={workoutLogs} />
+                </div>
+                <div>
+                    <h2 className="text-lg font-medium mb-6">Total Workouts Completed Over Time</h2>
+                    <TotalWorkouts logs={workoutLogs} />
+                </div>
+                </div>
+        </CenteredContent>
+    )
+}
 
-  // Prepare data for the bar chart
-  const chartData = {
-    labels: topWorkouts.map(([name]) => name),
-    datasets: [
-      {
-        label: 'Workout Count',
-        data: topWorkouts.map(([, count]) => count),
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-      },
-    ],
-  };
-
-  return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">User Statistics</h2>
-
-      <h3 className="text-xl font-semibold mb-2">Total Workout Duration: {totalDuration} minutes</h3>
-
-      <h3 className="text-xl font-semibold mb-2">Top Workouts</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        {topWorkouts.map(([name, count]) => (
-          <div key={name} className="bg-gray-200 rounded-lg p-4 text-center shadow">
-            <h4 className="font-bold">{name}</h4>
-            <p>Count: {count}</p>
-          </div>
-        ))}
-      </div>
-
-      <h3 className="text-xl font-semibold mb-2">Workout Count Bar Chart</h3>
-      <Bar data={chartData} options={{ responsive: true }} />
-    </div>
-  );
-};
-
-export default Stats;
+export default Stats

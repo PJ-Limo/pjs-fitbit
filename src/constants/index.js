@@ -5,14 +5,17 @@ import {
 import {
   FaChartBar,
   FaHistory,
+  FaHome,
 } from "react-icons/fa";
 import { PiNotePencilBold, PiBowlFood } from "react-icons/pi";
 import { GiWeightLiftingUp } from "react-icons/gi";
 
+
+
 export const links = [
   {
     href: "/",
-    icon: PiNotePencilBold,
+    icon: FaHome,
     text: "Home",
   },
   {

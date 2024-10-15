@@ -48,15 +48,15 @@ const WorkoutLog = ({ addWorkout }) => {
 
     return (
         <CenteredContent className="bg-[url('/src/assets/Fitness-image-1.png')] bg-cover bg-center">
-            <h1 className="text-7xl font-extrabold mb-4 text-white">Welcome!!</h1>
-            <p className="text-2xl font-thin mb-14 text-white">
+            <h1 className="font-extrabold mb-4 text-white sm:text-7xl md:text-7xl lg:text-8xl">Welcome!!</h1>
+            <p className="font-thin mb-14 text-white sm:text-xl md:text-xl lg:text-2xl">
                 Track your progress, crush your goals, and unlock a fitter you-one workout at a time!
             </p>
             <h2 className="text-4xl font-bold mb-16 text-Yellow">Log latest Workout</h2>
             {error && <p className="text-red-500 text-center">{error}</p>}
 
             <form id="logWorkout-form" onSubmit={handleSubmit} className="space-y-4">
-                <div className="flex flex-wrap justify-center w-full  items-center space-x-10 mb-4">
+                <div className="mb-4 grid grid-cols-5 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     <select
                         id="workout"
                         value={workout}

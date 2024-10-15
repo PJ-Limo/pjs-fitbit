@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CenteredContent from './CenteredContent'
 
 const WorkoutGuide = () => {
     const [targetArea, setTargetArea] = useState('')
@@ -42,15 +43,15 @@ const WorkoutGuide = () => {
     }
 
     return (
-        <div className="dark:bg-Navy">
+      <CenteredContent className="dark:bg-Navy">
             <div className="flex flex-col items-center mb-4">
-                <h1 className="text-3xl font-bold mt-24 mb-9 dark:text-Yellow">Workout Guide</h1>
+                <h1 className="text-3xl font-bold mb-9 dark:text-Yellow">Workout Guide</h1>
                 <input
                     type="text"
                     placeholder="Enter target area (e.g., abs, chest)"
                     value={targetArea}
                     onChange={handleInputChange}
-                    className="border-b border-gray-300 focus:border-Yellow focus:outline-none placeholder-NavyC p-2 pl-8 w-80 mb-7 dark:border-b dark:border-white dark:bg-transparent dark:text-white"
+                    className="border-b border-Yellow bg-transparent focus:border-Yellow focus:outline-none placeholder-NavyC w-80 mb-7 text-center dark:border-b dark:border-white dark:bg-transparent dark:text-white"
                 />
                 <button
                     onClick={handleSearch}
@@ -63,7 +64,7 @@ const WorkoutGuide = () => {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div className=" bg-[url('/src/assets/Fitness-image-3.png')] grid grid-cols-1 md:grid-cols-2 p-8 gap-4 w-full">
+                <div className=" bg-[url('/src/assets/Fitness-image-3.png') bg-repeat-round grid grid-cols-1 md:grid-cols-2 p-8 gap-4 w-full">
                     {exercises.length > 0 ? (
                         exercises.map((exercise) => (
                             <div
@@ -82,7 +83,7 @@ const WorkoutGuide = () => {
                             </div>
                         ))
                     ) : (
-                        <div className="text-Yellow flex w-full text-center justify-center ">
+                        <div className="text-Navy flex w-full text-center justify-center ">
                             <p>No exercises found</p>
                         </div>
                     )}
@@ -91,7 +92,7 @@ const WorkoutGuide = () => {
             <p className="text-sm italic  text-center font-thin mt-10 mb-10 text-Navy dark:text-Yellow">
                 “Unleash your potential—find a new challenge with every search!”
             </p>
-        </div>
+      </CenteredContent>
     )
 }
 

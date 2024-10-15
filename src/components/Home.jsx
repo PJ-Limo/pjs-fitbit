@@ -16,7 +16,7 @@ const Home = () => {
                     className="w-52 h-52 rounded-full object-cover object-top mb-10 shadow-xl"
                     alt="home image"
                 />
-                <h1 className="text-4xl font-bold mb-6 dark:text-Yellow">Welcome to the Fitness Tracker</h1>
+                <h1 className="text-4xl font-bold mb-6 dark:text-Yellow"><span className='font-light'>Welcome to the ultimate</span> Fitness Tracker</h1>
                 <p className="text-lg mb-4 dark:text-white">Track your progress and log your workouts here.</p>
 
                 {/* Button that navigates to LogWorkouts */}
@@ -24,7 +24,7 @@ const Home = () => {
                     onClick={handleNavigate}
                     className="bg-Navy text-Yellow px-6 py-3 rounded-lg hover:bg-Yellow hover:text-Navy transition duration-200"
                 >
-                    Go to Log Workouts
+                    Start here
                 </button>
 
                 <p className="text-sm italic  text-center font-thin mt-10 mb-10 text-Navy dark:text-Yellow">
