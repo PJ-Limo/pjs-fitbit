@@ -7,7 +7,7 @@ const LinkItem = ({ href, icon: Icon, text, isSidebarOpen }) => {
     return (
         <li>
             <NavLink
-                className={`flex gap-4 items-center p-2 text-Navy hover:bg-Navy hover:text-Yellow dark:hover:bg-YellowB
+                className={`flex gap-4 items-center p-2 text-Navy hover:bg-Navy hover:text-Yellow dark:hover:bg-YellowB rounded-lg
                     ${isActive ? 'text-Yellow bg-Navy dark:text-Navy dark:bg-Yellow' : 'dark:text-white'}`}
                 to={href}
                 end

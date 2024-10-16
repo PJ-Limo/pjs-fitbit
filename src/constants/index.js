@@ -3,11 +3,9 @@ import {
   IoIosLogOut,
 } from "react-icons/io";
 import {
-  FaChartBar,
   FaHistory,
-  FaHome,
 } from "react-icons/fa";
-import { PiNotePencilBold, PiBowlFood } from "react-icons/pi";
+import { FaHouse, FaFilePen, FaChartSimple, FaBowlFood } from "react-icons/fa6";
 import { GiWeightLiftingUp } from "react-icons/gi";
 
 
@@ -15,12 +13,12 @@ import { GiWeightLiftingUp } from "react-icons/gi";
 export const links = [
   {
     href: "/",
-    icon: FaHome,
+    icon: FaHouse,
     text: "Home",
   },
   {
     href: "/LogWorkout",
-    icon: PiNotePencilBold,
+    icon: FaFilePen,
     text: "Log Workout",
   },
   {
@@ -35,7 +33,7 @@ export const links = [
   },
   {
     href: "/Stats",
-    icon: FaChartBar,
+    icon: FaChartSimple,
     text: "Stats",
     badge: {
       text: "OpenSans",
@@ -50,7 +48,7 @@ export const links = [
   },
   {
     href: "Nutrition",
-    icon: PiBowlFood,
+    icon: FaBowlFood,
     text: "Nutrition",
   },
   {

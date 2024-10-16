@@ -15,7 +15,7 @@ const Header = ({ darkMode, toggleDarkMode, toggleSidebar }) => {
                     >
                         <HiOutlineMenuAlt2 className="text-2xl text-Navy" />
                     </button>
-                    <span className="self-center text-xl font-semibold sm:text-xl whitespace-nowrap dark:text-Yellow">
+                    <span className="self-center text-xl font-extrabold sm:text-xl whitespace-nowrap dark:text-Yellow">
                         PJ's Fitbit
                     </span>
                 </div>
