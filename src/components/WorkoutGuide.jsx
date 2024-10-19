@@ -69,7 +69,7 @@ const WorkoutGuide = () => {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div className=" bg-[url('/src/assets/Fitness-image-3.png')] bg-repeat-round grid grid-cols-1 md:grid-cols-2 p-8 gap-4 ml-20">
+                <div className=" bg-[url('/src/assets/Fitness-image-3.png')] bg-repeat-round grid grid-cols-1 md:grid-cols-2 p-8 gap-4 ml-44">
                     {exercises.length > 0 ? (
                         exercises.map((exercise) => (
                             <div
