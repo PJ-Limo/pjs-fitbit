@@ -43,19 +43,24 @@ const WorkoutGuide = () => {
     }
 
     return (
-      <CenteredContent className="dark:bg-Navy">
+      <CenteredContent className="dark:bg-Navy mt-14 min-h-screen">
             <div className="flex flex-col items-center mb-4">
-                <h1 className="text-3xl font-bold mb-9 dark:text-Yellow">Workout Guide</h1>
+                <h1 className="text-5xl font-bold mb-9 dark:text-Yellow">Workout Guide</h1>
                 <input
                     type="text"
                     placeholder="Enter target area (e.g., abs, chest)"
                     value={targetArea}
                     onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleSearch(); // Triggers search on Enter
+                        }
+                    }}
                     className="border-b border-Yellow bg-transparent focus:border-Yellow focus:outline-none placeholder-NavyC w-80 mb-7 text-center dark:border-b dark:border-white dark:bg-transparent dark:text-white"
                 />
                 <button
                     onClick={handleSearch}
-                    className="bg-Navy text-Yellow rounded-lg px-4 py-2 hover:bg-NavyB transition"
+                    className="bg-Navy text-Yellow rounded-lg px-4 py-2 hover:bg-NavyB transition active:-translate-y-0 active:shadow-inner"
                 >
                     Search
                 </button>
@@ -64,7 +69,7 @@ const WorkoutGuide = () => {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div className=" bg-[url('/src/assets/Fitness-image-3.png') bg-repeat-round grid grid-cols-1 md:grid-cols-2 p-8 gap-4 w-full">
+                <div className=" bg-[url('/src/assets/Fitness-image-3.png')] bg-repeat-round grid grid-cols-1 md:grid-cols-2 p-8 gap-4 ml-20">
                     {exercises.length > 0 ? (
                         exercises.map((exercise) => (
                             <div
@@ -83,7 +88,7 @@ const WorkoutGuide = () => {
                             </div>
                         ))
                     ) : (
-                        <div className="text-Navy flex w-full text-center justify-center ">
+                        <div className="text-Yellow text-center">
                             <p>No exercises found</p>
                         </div>
                     )}
