@@ -18,19 +18,19 @@ const Stats = () => {
 
     return (
         <CenteredContent>
-                <h1 className="text-3xl font-bold mb-8">Workout Progress</h1>
+                <h1 className="text-3xl font-bold mb-8 dark:text-Yellow">Workout Progress</h1>
                 <div className='flex flex-row lg:space-x-8'>
                   
                 <div>
-                    <h2 className="text-lg font-medium mb-6">Total Weight Lifted Over Time</h2>
+                    <h2 className="text-lg font-medium mb-6 dark:text-white">Total Weight Lifted Over Time</h2>
                     <WeightsLifted logs={workoutLogs} />
                 </div>
                 <div>
-                    <h2 className="text-lg font-medium mb-6">Average Reps per Set Over Time</h2>
+                    <h2 className="text-lg font-medium mb-6 dark:text-white">Average Reps per Set Over Time</h2>
                     <Reps logs={workoutLogs} />
                 </div>
                 <div>
-                    <h2 className="text-lg font-medium mb-6">Total Workouts Completed Over Time</h2>
+                    <h2 className="text-lg font-medium mb-6 dark:text-white">Total Workouts Completed Over Time</h2>
                     <TotalWorkouts logs={workoutLogs} />
                 </div>
                 </div>
