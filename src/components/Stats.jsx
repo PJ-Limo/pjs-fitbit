@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import Reps from './charts/Reps'
 import TotalWorkouts from './charts/TotalWorkouts'
-import WeightsLifted from './charts/weightsLifted'
+import WeightsLifted from './charts/WeightsLifted'
 import CenteredContent from './CenteredContent'
 
 const Stats = () => {
